@@ -1,3 +1,4 @@
+/* REGOLE GENERALI */
 * {
     margin: 0;
     padding: 0;
@@ -34,4 +35,44 @@
     height: 100%;
     /* debug */
     background-color: red;
+}
+
+.section-header {
+    padding: 10px;
+    height: 60px;
+    background-color: #eaeaea;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.tools i {
+    font-size: 20px;
+    margin-right: 20px;
+    color: #b0b0b0;
+}
+
+.user-pic {
+    width: 50px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+
+.user-pic img {
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.last-access {
+    display: block;
+    margin-top: 5px;
+    font-size: smaller;
+    color: #a3adb8;
 }
