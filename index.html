@@ -27,11 +27,10 @@
 
                         <div class="user">
                             <div class="user-pic">
-                                <img src="img/avataaars-1.png" alt="Avatar">
+                                <img :src="me.avatar" alt="Avatar">
                             </div>
                             <div class="user-info">
-                                <span>User Name</span>
-                            </div>
+                                <span>{{ me.name }}</span>                            </div>
 
                         </div>
                         <div class="tools">
@@ -61,82 +60,11 @@
 
                     <!-- lista chat -->
                     <ul class="chat-list">
-                        <li class="user">
+                        <li class="user" v-for="(contact, index) in contacts" :key="index">
                             <div class="user-pic">
-                                <img src="img/avataaars-2.png" alt="Avatar">
-                            </div>
+                                <img :src="contact.avatar" :alt="contact.name">                            </div>
                             <div class="user-info">
-                                <span>User Name</span>
-                                <span class="last-access">Ultimo messaggio</span>
-                                <span class="last-access positioned">Ultimo Accesso</span>
-                            </div>
-                        </li>
-                        <li class="user">
-                            <div class="user-pic">
-                                <img src="img/avataaars-2.png" alt="Avatar">
-                            </div>
-                            <div class="user-info">
-                                <span>User Name</span>
-                                <span class="last-access">Ultimo messaggio</span>
-                                <span class="last-access positioned">Ultimo Accesso</span>
-                            </div>
-                        </li>
-                        <li class="user">
-                            <div class="user-pic">
-                                <img src="img/avataaars-2.png" alt="Avatar">
-                            </div>
-                            <div class="user-info">
-                                <span>User Name</span>
-                                <span class="last-access">Ultimo messaggio</span>
-                                <span class="last-access positioned">Ultimo Accesso</span>
-                            </div>
-                        </li>
-                        <li class="user">
-                            <div class="user-pic">
-                                <img src="img/avataaars-2.png" alt="Avatar">
-                            </div>
-                            <div class="user-info">
-                                <span>User Name</span>
-                                <span class="last-access">Ultimo messaggio</span>
-                                <span class="last-access positioned">Ultimo Accesso</span>
-                            </div>
-                        </li>
-                        <li class="user">
-                            <div class="user-pic">
-                                <img src="img/avataaars-2.png" alt="Avatar">
-                            </div>
-                            <div class="user-info">
-                                <span>User Name</span>
-                                <span class="last-access">Ultimo messaggio</span>
-                                <span class="last-access positioned">Ultimo Accesso</span>
-                            </div>
-                        </li>
-                        <li class="user">
-                            <div class="user-pic">
-                                <img src="img/avataaars-2.png" alt="Avatar">
-                            </div>
-                            <div class="user-info">
-                                <span>User Name</span>
-                                <span class="last-access">Ultimo messaggio</span>
-                                <span class="last-access positioned">Ultimo Accesso</span>
-                            </div>
-                        </li>
-                        <li class="user">
-                            <div class="user-pic">
-                                <img src="img/avataaars-2.png" alt="Avatar">
-                            </div>
-                            <div class="user-info">
-                                <span>User Name</span>
-                                <span class="last-access">Ultimo messaggio</span>
-                                <span class="last-access positioned">Ultimo Accesso</span>
-                            </div>
-                        </li>
-                        <li class="user">
-                            <div class="user-pic">
-                                <img src="img/avataaars-2.png" alt="Avatar">
-                            </div>
-                            <div class="user-info">
-                                <span>User Name</span>
+                                <span>{{ contact.name }}</span>
                                 <span class="last-access">Ultimo messaggio</span>
                                 <span class="last-access positioned">Ultimo Accesso</span>
                             </div>

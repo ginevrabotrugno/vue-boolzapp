@@ -5,7 +5,7 @@ createApp ({
     data() {
         return {
             me: {
-                name: 'Davide',
+                name: 'Ginevra',
                 avatar: 'img/avataaars-1.png',
             },
             contacts: [
