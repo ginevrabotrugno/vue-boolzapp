@@ -59,10 +59,11 @@
     color: #b0b0b0;
 }
 
-.user-pic {
+.user-pic, .icon {
     width: 50px;
     aspect-ratio: 1/1;
     border-radius: 50%;
+    position: relative;
 }
 
 .user-pic img {
@@ -75,4 +76,32 @@
     margin-top: 5px;
     font-size: smaller;
     color: #a3adb8;
+}
+
+/* SIDE MENU */
+.notifications {
+    height: 70px;
+    background-color: #8edafc;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon {
+    background-color: #fff;
+    color: #8edafc;
+}
+
+.fa-bell-slash {
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.notifications-info a {
+    color: #699bb5;
 }
