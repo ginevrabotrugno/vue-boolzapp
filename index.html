@@ -60,9 +60,10 @@
 
                     <!-- lista chat -->
                     <ul class="chat-list">
-                        <li class="user" v-for="(contact, index) in contacts" :key="index">
+                        <li class="user" v-for="(contact, index) in contacts" :key="index" @click="selectContact(index)">
                             <div class="user-pic">
-                                <img :src="contact.avatar" :alt="contact.name">                            </div>
+                                <img :src="contact.avatar" :alt="contact.name">                            
+                            </div>
                             <div class="user-info">
                                 <span>{{ contact.name }}</span>
                                 <span class="last-access">Ultimo messaggio</span>
@@ -80,10 +81,10 @@
 
                         <div class="user">
                             <div class="user-pic">
-                                <img src="img/avataaars-2.png" alt="Avatar">
+                                <img :src="contacts[selectedContactIndex].avatar" alt="Avatar">
                             </div>
                             <div class="user-info">
-                                <span>User Name</span>
+                                <span>{{ contacts[selectedContactIndex].name }}</span>
                                 <span class="last-access">Ultimo Accesso</span>
                             </div>
                         </div>
@@ -97,16 +98,10 @@
                     </div>
 
                     <div class="chat-container">
-                        <div class="message message-received">
+                        <div v-for="(message, msgIndex) in contacts[selectedContactIndex].messages" :key="msgIndex" :class="['message', message.status === 'received' ? 'message-received' : 'message-sent']">
                             <div class="message-content">
-                                <p>Ciao! Come stai?</p>
-                                <span class="timestamp">10:00</span>
-                            </div>
-                        </div>
-                        <div class="message message-sent">
-                            <div class="message-content">
-                                <p>Tutto bene, grazie! E tu?</p>
-                                <span class="timestamp">10:01</span>
+                                <p>{{ message.message }}</p>
+                                <span class="timestamp">{{ message.date }}</span>
                             </div>
                         </div>
                     </div>

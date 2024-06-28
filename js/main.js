@@ -171,10 +171,13 @@ createApp ({
                     ],
                 }
             ],
+            selectedContactIndex: 0,
         }
     },
     methods: {
-
+        selectContact(index) {
+            this.selectedContactIndex = index;
+        },
     }
 
 }).mount('#app');
