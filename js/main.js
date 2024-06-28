@@ -178,6 +178,20 @@ createApp ({
         selectContact(index) {
             this.selectedContactIndex = index;
         },
+        sendMessage() {
+            // Non inviare messaggi vuoti
+            if (this.newMessage === '') {
+                return; 
+            }
+            const activeContact = this.contacts[this.selectedContactIndex];
+            const currentDate = new Date().toLocaleString();
+            activeContact.messages.push({
+                date: currentDate,
+                message: this.newMessage,
+                status: 'sent'
+            });
+            this.newMessage = ''; 
+        },
     }
 
 }).mount('#app');
