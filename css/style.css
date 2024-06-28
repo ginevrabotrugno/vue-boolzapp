@@ -191,5 +191,48 @@ ul {
     overflow-y: auto;
     background-image: url('../img/chat-background.jpg');
     background-size: contain;
+    padding: 20px;
+}
+
+/* STILE DEI MESSAGGI */
+.message {
+    display: flex;
+    align-items: flex-end;
+    padding: 10px;
+}
+
+.message-received {
+    justify-content: flex-start;
+}
+
+.message-sent {
+    justify-content: flex-end;
+}
+
+.message-content {
+    min-width: 150px;
+    max-width: 60%;
+    min-height: 65px;
+    padding: 15px;
+    border-radius: 10px;
+    position: relative;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.message-received .message-content {
+    background: #fff;
+}
+
+.message-sent .message-content {
+    background-color: #d5f9ba;
+}
+
+.timestamp {
+    font-size: 10px;
+    color: #999999;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
 }
 
