@@ -191,6 +191,15 @@ createApp ({
                 status: 'sent'
             });
             this.newMessage = ''; 
+            
+            // Simula una risposta "ok" dopo 1 secondo
+            setTimeout(() => {
+                activeContact.messages.push({
+                    date: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+                    message: 'Ok',
+                    status: 'received'
+                });
+            }, 1000);
         },
     }
 
