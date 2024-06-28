@@ -6,11 +6,15 @@
 }
 
 :root {
-    font-family: 'Lato', sans-serif;;
+    font-family: 'Lato', sans-serif;
 }
 
 i {
     cursor: pointer;
+}
+
+ul {
+    list-style: none;
 }
 
 #container {
@@ -19,26 +23,26 @@ i {
     display: flex;
     justify-content: center;
     align-items: center;
-}
+    background: linear-gradient(to bottom, #009688 20%, #dadbd3 20%);}
 
 #wrapper {
     width: 80%;
     height: 90%;
     display: flex;
+    background-color: #fff;
 }
 
 .side-menu {
     width: 35%;
     height: 100%;
-    /* debug */
-    background-color: violet;
+    display: flex;
+    flex-direction: column;
 }
 
-.chat {
+.chat-opened {
     width: 65%;
     height: 100%;
-    /* debug */
-    background-color: red;
+    background-color: #ffffff; 
 }
 
 .section-header {
@@ -131,4 +135,15 @@ i {
     border: 0;
     font-family: inherit;
     color: #bec1c4;
+}
+
+/* LISTA CHAT */
+.chat-list {
+    padding: 0 10px;
+    overflow-y: auto; 
+    flex-grow: 1; 
+}
+
+.chat-list li {
+    padding-top: 15px;
 }
