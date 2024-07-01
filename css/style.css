@@ -236,3 +236,27 @@ ul {
     right: 10px;
 }
 
+.message-options {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 5px 10px;
+    z-index: 100;
+    font: 12px;
+}
+
+.message-options a {
+    display: block;
+    padding: 5px 0;
+    color: #333;
+    text-decoration: none;
+}
+
+.message-options a:hover {
+    background-color: #e0e0e0;
+}

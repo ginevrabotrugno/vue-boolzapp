@@ -102,9 +102,13 @@
 
                     <div class="chat-container">
                         <div v-for="(message, msgIndex) in contacts[selectedContactIndex].messages" :key="msgIndex" :class="['message', message.status === 'received' ? 'message-received' : 'message-sent']">
-                            <div class="message-content">
+                            <div class="message-content" @click="toggleMessageOptions(msgIndex)">
                                 <p>{{ message.message }}</p>
                                 <span class="timestamp">{{ formatMessageDate(message.date) }}</span>
+                                <!-- Aggiunta del menu a tendina -->
+                                <div v-if="message.showOptions" class="message-options">
+                                    <a href="#" @click="deleteMessage(msgIndex)">Cancella messaggio</a>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -206,7 +206,22 @@ createApp ({
         },
         formatMessageDate(dateTimeString) {
             return dt.fromFormat(dateTimeString, 'dd/MM/yyyy HH:mm:ss').toFormat('HH:mm');
-        }
+        },
+        // Metodo per mostrare/nascondere il menu a tendina
+        toggleMessageOptions(msgIndex) {
+            this.contacts[this.selectedContactIndex].messages.forEach((message, index) => {
+                if (index === msgIndex) {
+                    message.showOptions = !message.showOptions; 
+                } else {
+                    message.showOptions = false; 
+                }
+            });
+        },
+        // Metodo per cancellare un messaggio
+        deleteMessage(msgIndex) {
+            // Rimuove il messaggio dall'array dei messaggi del contatto attivo
+            this.contacts[this.selectedContactIndex].messages.splice(msgIndex, 1);
+        },
     }
 
 }).mount('#app');
