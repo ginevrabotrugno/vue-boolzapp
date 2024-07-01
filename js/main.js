@@ -1,5 +1,6 @@
 const { createApp } = Vue;
-const { DateTime } = luxon;
+const dt = luxon.DateTime; 
+console.log(dt);
 
 createApp ({
     data() {
@@ -172,6 +173,7 @@ createApp ({
                 }
             ],
             selectedContactIndex: 0,
+            newMessage: '',
         }
     },
     methods: {
@@ -184,8 +186,9 @@ createApp ({
                 return; 
             }
             const activeContact = this.contacts[this.selectedContactIndex];
+            const now = dt.now().toFormat('HH:mm');
             activeContact.messages.push({
-                date: DateTime.now().toISO(),
+                date: now,
                 message: this.newMessage,
                 status: 'sent'
             });
@@ -193,16 +196,17 @@ createApp ({
             
             // Simula una risposta "ok" dopo 1 secondo
             setTimeout(() => {
+                const nowResponse = dt.now().toFormat('HH:mm');
                 activeContact.messages.push({
-                    date: DateTime.now().toISO(),
+                    date: nowResponse,
                     message: 'Ok',
                     status: 'received'
                 });
             }, 1000);
         },
-        formatDate(dateStr) {
-            return DateTime.fromISO(dateStr).toLocaleString(DateTime.DATETIME_MED);
-        },
+        formatMessageDate(dateTimeString) {
+            return dt.fromFormat(dateTimeString, 'dd/MM/yyyy HH:mm:ss').toFormat('HH:mm');
+        }
     }
 
 }).mount('#app');

@@ -104,7 +104,7 @@
                         <div v-for="(message, msgIndex) in contacts[selectedContactIndex].messages" :key="msgIndex" :class="['message', message.status === 'received' ? 'message-received' : 'message-sent']">
                             <div class="message-content">
                                 <p>{{ message.message }}</p>
-                                <span class="timestamp">{{ formatDate(message.date) }}</span>
+                                <span class="timestamp">{{ formatMessageDate(message.date) }}</span>
                             </div>
                         </div>
                     </div>
