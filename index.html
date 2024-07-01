@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- iclusione Vue 3.x -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- inclusione Luxon -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/3.0.1/luxon.min.js"></script>
     <title>Boolzapp</title>
 </head>
 <body>
@@ -102,7 +104,7 @@
                         <div v-for="(message, msgIndex) in contacts[selectedContactIndex].messages" :key="msgIndex" :class="['message', message.status === 'received' ? 'message-received' : 'message-sent']">
                             <div class="message-content">
                                 <p>{{ message.message }}</p>
-                                <span class="timestamp">{{ message.date }}</span>
+                                <span class="timestamp">{{ formatDate(message.date) }}</span>
                             </div>
                         </div>
                     </div>

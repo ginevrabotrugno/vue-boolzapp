@@ -1,5 +1,5 @@
-
 const { createApp } = Vue;
+const { DateTime } = luxon;
 
 createApp ({
     data() {
@@ -184,9 +184,8 @@ createApp ({
                 return; 
             }
             const activeContact = this.contacts[this.selectedContactIndex];
-            const currentDate = new Date().toLocaleString();
             activeContact.messages.push({
-                date: currentDate,
+                date: DateTime.now().toISO(),
                 message: this.newMessage,
                 status: 'sent'
             });
@@ -195,11 +194,14 @@ createApp ({
             // Simula una risposta "ok" dopo 1 secondo
             setTimeout(() => {
                 activeContact.messages.push({
-                    date: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+                    date: DateTime.now().toISO(),
                     message: 'Ok',
                     status: 'received'
                 });
             }, 1000);
+        },
+        formatDate(dateStr) {
+            return DateTime.fromISO(dateStr).toLocaleString(DateTime.DATETIME_MED);
         },
     }
 
