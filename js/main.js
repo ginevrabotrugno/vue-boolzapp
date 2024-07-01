@@ -174,6 +174,7 @@ createApp ({
             ],
             selectedContactIndex: 0,
             newMessage: '',
+            openMessageOptions: []
         }
     },
     methods: {
@@ -209,13 +210,17 @@ createApp ({
         },
         // Metodo per mostrare/nascondere il menu a tendina
         toggleMessageOptions(msgIndex) {
-            this.contacts[this.selectedContactIndex].messages.forEach((message, index) => {
-                if (index === msgIndex) {
-                    message.showOptions = !message.showOptions; 
-                } else {
-                    message.showOptions = false; 
-                }
-            });
+            const index = this.openMessageOptions.indexOf(msgIndex);
+            if (index === -1) {
+                // Messaggio non aperto, aggiungi l'indice all'array
+                this.openMessageOptions.push(msgIndex);
+            } else {
+                // Messaggio già aperto, rimuovi l'indice dall'array
+                this.openMessageOptions.splice(index, 1);
+            }
+        },
+        isMessageOptionsOpen(msgIndex) {
+            return this.openMessageOptions.includes(msgIndex);
         },
         // Metodo per cancellare un messaggio
         deleteMessage(msgIndex) {

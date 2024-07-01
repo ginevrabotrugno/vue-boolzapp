@@ -106,7 +106,7 @@
                                 <p>{{ message.message }}</p>
                                 <span class="timestamp">{{ formatMessageDate(message.date) }}</span>
                                 <!-- Aggiunta del menu a tendina -->
-                                <div v-if="message.showOptions" class="message-options">
+                                <div v-if="isMessageOptionsOpen(msgIndex)" class="message-options">
                                     <a href="#" @click="deleteMessage(msgIndex)">Cancella messaggio</a>
                                 </div>
                             </div>
