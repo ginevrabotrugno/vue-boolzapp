@@ -72,7 +72,9 @@
                                 <span class="last-access">
                                     {{ getLastMessage(contact) }}
                                 </span>
-                                <span class="last-access positioned">Ultimo Accesso</span>
+                                <span class="last-access positioned">
+                                    {{ formatLastMessageTime(contact) }}
+                                </span>
                             </div>
                         </li>
                     </ul>
@@ -90,7 +92,7 @@
                             </div>
                             <div class="user-info">
                                 <span>{{ contacts[selectedContactIndex].name }}</span>
-                                <span class="last-access">Ultimo Accesso</span>
+                                <span class="last-access">Ultimo accesso oggi alle {{ formatLastMessageTime(contacts[selectedContactIndex]) }}</span>
                             </div>
                         </div>
                         <div class="tools">

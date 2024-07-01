@@ -241,6 +241,13 @@ createApp ({
             }
             return "";
         },
+        formatLastMessageTime(contact) {
+            if (contact.messages.length > 0) {
+                const lastMessage = contact.messages[contact.messages.length - 1];
+                return this.formatMessageDate(lastMessage.date);
+            }
+            return "";
+        },
     }
 
 }).mount('#app');
