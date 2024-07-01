@@ -235,6 +235,12 @@ createApp ({
             // Rimuove il messaggio dall'array dei messaggi del contatto attivo
             this.contacts[this.selectedContactIndex].messages.splice(msgIndex, 1);
         },
+        getLastMessage(contact) {
+            if (contact.messages.length > 0) {
+                return contact.messages[contact.messages.length - 1].message;
+            }
+            return "";
+        },
     }
 
 }).mount('#app');
