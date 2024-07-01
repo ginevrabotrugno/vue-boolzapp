@@ -186,7 +186,7 @@ createApp ({
                 return; 
             }
             const activeContact = this.contacts[this.selectedContactIndex];
-            const now = dt.now().toFormat('HH:mm');
+            const now = dt.now().toFormat('dd/MM/yyyy HH:mm:ss');
             activeContact.messages.push({
                 date: now,
                 message: this.newMessage,
@@ -196,7 +196,7 @@ createApp ({
             
             // Simula una risposta "ok" dopo 1 secondo
             setTimeout(() => {
-                const nowResponse = dt.now().toFormat('HH:mm');
+                const nowResponse = dt.now().toFormat('dd/MM/yyyy HH:mm:ss');                
                 activeContact.messages.push({
                     date: nowResponse,
                     message: 'Ok',
