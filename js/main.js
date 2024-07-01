@@ -174,7 +174,15 @@ createApp ({
             ],
             selectedContactIndex: 0,
             newMessage: '',
-            openMessageOptions: []
+            openMessageOptions: [],
+            searchKeyword: '',
+        }
+    },
+    computed: {
+        filteredContacts() {
+            return this.contacts.filter(contact => {
+                return contact.name.toLowerCase().includes(this.searchKeyword.toLowerCase());
+            });
         }
     },
     methods: {

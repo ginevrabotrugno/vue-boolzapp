@@ -58,12 +58,12 @@
                     <!-- barra di ricerca -->
                     <div class="search">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" placeholder="Cerca o inizia una nuova chat">
+                        <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchKeyword">
                     </div>
 
                     <!-- lista chat -->
                     <ul class="chat-list">
-                        <li class="user" v-for="(contact, index) in contacts" :key="index" @click="selectContact(index)">
+                        <li class="user" v-for="(contact, index) in filteredContacts" :key="index" @click="selectContact(index)">
                             <div class="user-pic">
                                 <img :src="contact.avatar" :alt="contact.name">                            
                             </div>
