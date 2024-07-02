@@ -268,3 +268,26 @@ ul {
     background-color: #e0e0e0;
 }
 
+.tools {
+    position: relative;
+}
+
+.dropdown {
+    position: absolute;
+    top: 25px;
+    right: 20px;
+    z-index: 900;
+}
+
+.dropdown a {
+    text-decoration: none;
+    background-color: #fff;
+    padding: 10px 15px;
+    color: inherit;
+    display: block;
+    width: 200px;
+}
+
+.dropdown a:hover {
+    background-color: #e0e0e0;
+}
