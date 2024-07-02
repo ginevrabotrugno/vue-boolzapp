@@ -120,7 +120,8 @@
                     <div class="writing-area">
                         <i class="fa-regular fa-face-smile"></i>
                         <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="sendMessage">
-                        <i class="fa-solid fa-microphone-lines"></i>
+                        <i v-if="newMessage.trim() !== ''" class="fa-solid fa-paper-plane" @click="sendMessage"></i>
+                        <i v-else class="fa-solid fa-microphone-lines"></i>
                     </div>
 
                 </div>
