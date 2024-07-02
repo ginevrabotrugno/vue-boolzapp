@@ -205,14 +205,27 @@ createApp ({
             });
             this.newMessage = ''; 
             
-            // Simula una risposta "ok" dopo 1 secondo
             setTimeout(() => {
-                const nowResponse = dt.now().toFormat('dd/MM/yyyy HH:mm:ss');                
-                activeContact.messages.push({
-                    date: nowResponse,
-                    message: 'Ok',
-                    status: 'received'
-                });
+                const nowResponse = dt.now().toFormat('dd/MM/yyyy HH:mm:ss');
+                
+                // Esegui la richiesta Axios per ottenere una scusa dall'API
+                axios.get('https://flynn.boolean.careers/exercises/api/random/sentence')
+                    .then(result => {
+                        activeContact.messages.push({
+                            date: nowResponse,
+                            message: result.data.response, 
+                            status: 'received'
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Errore nella richiesta API:', error);
+                        // Nel caso di errore, inserisci comunque un messaggio di fallback
+                        activeContact.messages.push({
+                            date: nowResponse,
+                            message: 'Mi dispiace, non ho capito.',
+                            status: 'received'
+                        });
+                    });
             }, 1000);
         },
         formatMessageDate(dateTimeString) {
