@@ -229,7 +229,7 @@ createApp ({
                         // Mantieni lo stato "online" per 2 secondi
                         setTimeout(() => {
                             // Imposta l'ultimo accesso
-                            this.lastAccess = nowResponse.split(' ')[1]; // solo l'orario
+                            this.lastAccess = dt.fromFormat(nowResponse, 'dd/MM/yyyy HH:mm:ss').toFormat('HH:mm');
                             this.statusText = `ultimo accesso alle ${this.lastAccess}`;
                         }, 2000);
 
