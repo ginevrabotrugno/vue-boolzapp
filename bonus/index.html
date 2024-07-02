@@ -82,9 +82,12 @@
                     </ul>
                 </div>
 
-
+                <div v-if="selectedContactIndex === null" class="welcome-message">
+                    <h2>Benvenuto!</h2>
+                    <p>Seleziona un contatto dalla lista per visualizzare i suoi messaggi.</p>
+                </div>
                 <!-- Chat corrente -->
-                <div class="chat-opened">
+                <div v-else class="chat-opened">
                     <!-- profilo contatto chat -->
                     <div class="section-header">
 
@@ -110,6 +113,7 @@
                         
                     </div>
 
+                    
                     <div class="chat-container" ref="chatContainer">
                         <div v-for="(message, msgIndex) in contacts[selectedContactIndex].messages" :key="msgIndex" :class="['message', message.status === 'received' ? 'message-received' : 'message-sent']">
                             <div class="message-content" @click="toggleMessageOptions(msgIndex)">
@@ -131,6 +135,7 @@
                     </div>
 
                 </div>
+
             </div>
         </div>
 

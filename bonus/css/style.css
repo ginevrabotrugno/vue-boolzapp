@@ -340,3 +340,23 @@ ul {
 .popup button:hover {
     background: #f0f0f0;
 }
+
+.welcome-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 65%;
+    text-align: center;
+    color: #7f8c8d;
+    background-color: #ecf0f1;
+}
+
+.welcome-message h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.welcome-message p {
+    font-size: 18px;
+}

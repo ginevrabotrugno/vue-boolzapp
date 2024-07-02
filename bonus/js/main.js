@@ -174,7 +174,7 @@ createApp ({
                     ],
                 }
             ],
-            selectedContactIndex: 0,
+            selectedContactIndex: null,
             newMessage: '',
             openMessageOptions: [],
             searchKeyword: '',
