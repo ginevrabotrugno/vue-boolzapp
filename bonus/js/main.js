@@ -7,6 +7,7 @@ console.log(dt);
 createApp ({
     data() {
         return {
+            showSplash: true,
             me: {
                 name: 'Ginevra',
                 avatar: 'img/avataaars-1.png',
@@ -338,8 +339,15 @@ createApp ({
         scrollToBottom() {
             const chatContainer = this.$refs.chatContainer;
             chatContainer.scrollTop = chatContainer.scrollHeight;
-        }
-    
-    }
+        },
+    }, 
+    mounted() {
+        // Imposta showSplash su false dopo 1 secondo
+        setTimeout(() => {
+            this.showSplash = false;
+        }, 1000);
+    },
+
+
 
 }).mount('#app');
