@@ -100,8 +100,8 @@
                         <div class="tools">
                             <i class="fa-solid fa-magnifying-glass"></i>
                             <i class="fa-solid fa-paperclip"></i>
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                            <div class="dropdown">
+                            <i class="fa-solid fa-ellipsis-vertical" @click="isDropdownOpen = !isDropdownOpen"></i>
+                            <div class="dropdown" v-if="isDropdownOpen">
                                 <a href="#">Elimina Chat</a>
                                 <a href="#">Elimina Messaggi</a>
                             </div>

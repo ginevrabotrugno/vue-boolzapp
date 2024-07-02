@@ -181,6 +181,7 @@ createApp ({
             statusText: 'online', // testo di stato iniziale
             typingTimeout: null, // per gestire il timeout dello "sta scrivendo..."
             lastAccess: '', // per memorizzare l'ultimo accesso
+            isDropdownOpen: false,
         }
     },
     computed: {
