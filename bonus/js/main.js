@@ -292,6 +292,15 @@ createApp ({
             }
             return "";
         },
+        deleteAllMessages() {
+            const activeContact = this.contacts[this.selectedContactIndex];
+            activeContact.messages = []; 
+        },
+        deleteChat() {
+            // Remove the entire contact from the contacts array
+            this.contacts.splice(this.selectedContactIndex, 1);
+        }
+    
     }
 
 }).mount('#app');

@@ -102,8 +102,8 @@
                             <i class="fa-solid fa-paperclip"></i>
                             <i class="fa-solid fa-ellipsis-vertical" @click="isDropdownOpen = !isDropdownOpen"></i>
                             <div class="dropdown" v-if="isDropdownOpen">
-                                <a href="#">Elimina Chat</a>
-                                <a href="#">Elimina Messaggi</a>
+                                <a href="#" @click="deleteChat()">Elimina Chat</a>
+                                <a href="#" @click="deleteAllMessages()">Elimina Messaggi</a>
                             </div>
 
                         </div>
