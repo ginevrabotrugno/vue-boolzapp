@@ -21,11 +21,12 @@
 </head>
 <body>
     
-    <div id="splash" class="splash" :class="{ 'hidden': !showSplash }">
-        <h1>Benvenuto!</h1>
-    </div>
-    <div id="app" v-show="!showSplash">
-        <div id="container">
+    
+    <div id="app">
+        <div id="splash" class="splash" :class="{ 'hidden': !showSplash }">
+            <h1>Benvenuto!</h1>
+        </div>
+        <div id="container" v-show="!showSplash">
             <div id="wrapper">
                 <!-- Menu laterale -->
                 <div class="side-menu">
