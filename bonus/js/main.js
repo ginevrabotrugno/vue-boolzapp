@@ -182,6 +182,11 @@ createApp ({
             typingTimeout: null, // per gestire il timeout dello "sta scrivendo..."
             lastAccess: '', // per memorizzare l'ultimo accesso
             isDropdownOpen: false,
+            showAddContactPopup: false,
+            newContact: {
+                name: '',
+                avatar: ''
+            },
         }
     },
     computed: {
@@ -299,7 +304,25 @@ createApp ({
         deleteChat() {
             // Remove the entire contact from the contacts array
             this.contacts.splice(this.selectedContactIndex, 1);
-        }
+        },
+        addContact() {
+            if (this.newContact.name.trim() && this.newContact.avatar.trim()) {
+                this.contacts.push({
+                    name: this.newContact.name,
+                    avatar: this.newContact.avatar,
+                    messages: []
+                });
+                this.newContact.name = '';
+                this.newContact.avatar = '';
+                this.showAddContactPopup = false;
+            } else {
+                alert('Per favore, inserisci un nome e un link all\'icona validi.');
+            }
+        },
+        // Modifica il metodo che visualizza il popup
+        showAddContactForm() {
+            this.showAddContactPopup = true;
+        },
     
     }
 

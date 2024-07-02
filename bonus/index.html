@@ -41,7 +41,7 @@
                         <div class="tools">
 
                             <i class="fa-solid fa-circle-notch"></i>
-                            <i class="fa-solid fa-message"></i>
+                            <i class="fa-solid fa-message" @click="showAddContactForm"></i>
                             <i class="fa-solid fa-ellipsis-vertical"></i>
 
                         </div>
@@ -131,6 +131,20 @@
                     </div>
 
                 </div>
+            </div>
+        </div>
+
+        <div v-if="showAddContactPopup" class="popup-overlay">
+            <div class="popup">
+                <h2>Aggiungi Nuovo Contatto</h2>
+                <label for="new-contact-name">Nome:</label>
+                <input type="text" id="new-contact-name" v-model="newContact.name" />
+                
+                <label for="new-contact-avatar">Link Icona:</label>
+                <input type="text" id="new-contact-avatar" v-model="newContact.avatar" />
+                
+                <button @click="addContact">Aggiungi</button>
+                <button @click="showAddContactPopup = false">Annulla</button>
             </div>
         </div>
 
