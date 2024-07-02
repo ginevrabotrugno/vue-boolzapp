@@ -63,10 +63,6 @@ ul {
     position: relative;
 }
 
-.user:hover {
-    background-color: #eff2f2;
-}
-
 .user.active {
     background-color: #e9ebeb;
 }
@@ -155,6 +151,10 @@ ul {
 
 .chat-list li {
     padding: 10px 0;
+}
+
+.chat-list li:hover {
+    background-color: #eff2f2;
 }
 
 
