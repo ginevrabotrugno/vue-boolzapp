@@ -63,6 +63,14 @@ ul {
     position: relative;
 }
 
+.user:hover {
+    background-color: #eff2f2;
+}
+
+.user.active {
+    background-color: #e9ebeb;
+}
+
 .tools i {
     font-size: 20px;
     margin-right: 20px;

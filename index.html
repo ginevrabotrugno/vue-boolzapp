@@ -63,7 +63,7 @@
 
                     <!-- lista chat -->
                     <ul class="chat-list">
-                        <li class="user" v-for="(contact, index) in filteredContacts" :key="index" @click="selectContact(index)">
+                        <li class="user" v-for="(contact, index) in filteredContacts" :key="index" @click="selectContact(index)" :class="{ active: selectedContactIndex === index }">
                             <div class="user-pic">
                                 <img :src="contact.avatar" :alt="contact.name">                            
                             </div>
