@@ -1,0 +1,261 @@
+/* REGOLE GENERALI */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-family: 'Lato', sans-serif;
+}
+
+i {
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+}
+
+#container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #009688 20%, #dadbd3 20%);}
+
+#wrapper {
+    width: 80%;
+    height: 90%;
+    display: flex;
+    background-color: #fff;
+}
+
+.side-menu {
+    width: 35%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-opened {
+    width: 65%;
+    height: 100%;
+    background-color: #ffffff;
+    position: relative; 
+}
+
+.section-header {
+    padding: 10px;
+    height: 60px;
+    background-color: #eaeaea;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.tools i {
+    font-size: 20px;
+    margin-right: 20px;
+    color: #b0b0b0;
+}
+
+.user-pic, .icon {
+    width: 50px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    position: relative;
+}
+
+.user-pic img {
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.last-access {
+    display: block;
+    margin-top: 5px;
+    font-size: smaller;
+    color: #a3adb8;
+}
+
+/* SIDE MENU */
+.notifications {
+    height: 70px;
+    background-color: #8edafc;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon {
+    background-color: #fff;
+    color: #8edafc;
+}
+
+.fa-bell-slash {
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.notifications-info a {
+    color: #699bb5;
+}
+
+.search {
+    padding: 10px;
+    background-color: #f8f8f8;
+    display: flex;
+    align-items: center;
+}
+
+.search i {
+    background-color: #fff;
+    padding: 10px 15px;
+    color: #bec1c4;
+    border: none;
+    width: 10%;
+}
+
+.search input {
+    padding: 10px 20px;
+    width: 90%;
+    border: 0;
+    font-family: inherit;
+}
+
+/* LISTA CHAT */
+.chat-list {
+    padding: 0 10px;
+    overflow-y: auto; 
+    flex-grow: 1; 
+}
+
+.chat-list li {
+    padding-top: 15px;
+}
+
+
+.positioned {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    font-size: 12px;
+}
+
+
+/* CHAT */
+.writing-area {
+    width: 100%;
+    height: 70px;
+    background-color: #f3eeea;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.writing-area i {
+    padding: 0 25px;
+    font-size: 25px;
+    color: #70787a;
+}
+
+.writing-area input {
+    width: 80%;
+    padding: 10px 20px;
+    border: 0;
+    font-family: inherit;
+    border-radius: 10px;
+}
+
+.chat-container {
+    height: calc(100% - 130px);
+    overflow-y: auto;
+    background-image: url('../img/chat-background.jpg');
+    background-size: contain;
+    padding: 20px;
+}
+
+/* STILE DEI MESSAGGI */
+.message {
+    display: flex;
+    align-items: flex-end;
+    padding: 10px;
+}
+
+.message-received {
+    justify-content: flex-start;
+}
+
+.message-sent {
+    justify-content: flex-end;
+}
+
+.message-content {
+    min-width: 150px;
+    max-width: 60%;
+    min-height: 65px;
+    padding: 15px;
+    border-radius: 10px;
+    position: relative;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.message-received .message-content {
+    background: #fff;
+}
+
+.message-sent .message-content {
+    background-color: #d5f9ba;
+}
+
+.timestamp {
+    font-size: 10px;
+    color: #999999;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+}
+
+.message-options {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 5px 10px;
+    z-index: 100;
+    font: 12px;
+}
+
+.message-options a {
+    display: block;
+    padding: 5px 0;
+    color: #333;
+    text-decoration: none;
+}
+
+.message-options a:hover {
+    background-color: #e0e0e0;
+}

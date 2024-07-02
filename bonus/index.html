@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- my style -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- iclusione Vue 3.x -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- inclusione Luxon -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/3.0.1/luxon.min.js"></script>
+    <title>Boolzapp Bonus</title>
+</head>
+<body>
+    
+    <div id="app">
+        <div id="container">
+            <div id="wrapper">
+                <!-- Menu laterale -->
+                <div class="side-menu">
+                    <!-- profilo utente -->
+                    <div class="section-header">
+
+                        <div class="user">
+                            <div class="user-pic">
+                                <img :src="me.avatar" alt="Avatar">
+                            </div>
+                            <div class="user-info">
+                                <span>{{ me.name }}</span>                            
+                            </div>
+
+                        </div>
+                        <div class="tools">
+
+                            <i class="fa-solid fa-circle-notch"></i>
+                            <i class="fa-solid fa-message"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+
+                        </div>
+
+                    </div>
+                    <!-- notifiche disattivate -->
+                    <div class="notifications">
+                        <div class="icon">
+                            <i class="fa-solid fa-bell-slash"></i>
+                        </div>
+                        <div class="notifications-info">
+                            <span>Ricevi notifiche di nuovi messaggi</span>
+                            <a href="#" class="last-access">Attiva notifiche desktop</a>
+                        </div>
+                    </div>
+                    <!-- barra di ricerca -->
+                    <div class="search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchKeyword">
+                    </div>
+
+                    <!-- lista chat -->
+                    <ul class="chat-list">
+                        <li class="user" v-for="(contact, index) in filteredContacts" :key="index" @click="selectContact(index)">
+                            <div class="user-pic">
+                                <img :src="contact.avatar" :alt="contact.name">                            
+                            </div>
+                            <div class="user-info">
+                                <span>{{ contact.name }}</span>
+                                <span class="last-access">
+                                    {{ getLastMessage(contact) }}
+                                </span>
+                                <span class="last-access positioned">
+                                    {{ formatLastMessageTime(contact) }}
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <!-- Chat corrente -->
+                <div class="chat-opened">
+                    <!-- profilo contatto chat -->
+                    <div class="section-header">
+
+                        <div class="user">
+                            <div class="user-pic">
+                                <img :src="contacts[selectedContactIndex].avatar" alt="Avatar">
+                            </div>
+                            <div class="user-info">
+                                <span>{{ contacts[selectedContactIndex].name }}</span>
+                                <span class="last-access">Ultimo accesso oggi alle {{ formatLastMessageTime(contacts[selectedContactIndex]) }}</span>
+                            </div>
+                        </div>
+                        <div class="tools">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <i class="fa-solid fa-paperclip"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+
+                        </div>
+                        
+                    </div>
+
+                    <div class="chat-container">
+                        <div v-for="(message, msgIndex) in contacts[selectedContactIndex].messages" :key="msgIndex" :class="['message', message.status === 'received' ? 'message-received' : 'message-sent']">
+                            <div class="message-content" @click="toggleMessageOptions(msgIndex)">
+                                <p>{{ message.message }}</p>
+                                <span class="timestamp">{{ formatMessageDate(message.date) }}</span>
+                                <!-- Aggiunta del menu a tendina -->
+                                <div v-if="isMessageOptionsOpen(msgIndex)" class="message-options">
+                                    <a href="#" @click="deleteMessage(msgIndex)">Cancella messaggio</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="writing-area">
+                        <i class="fa-regular fa-face-smile"></i>
+                        <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="sendMessage">
+                        <i class="fa-solid fa-microphone-lines"></i>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- my script -->
+    <script type="text/javascript" src="js/main.js"></script>
+
+</body>
+</html>    
