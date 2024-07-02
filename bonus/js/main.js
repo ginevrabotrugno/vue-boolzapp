@@ -217,6 +217,11 @@ createApp ({
             // Aggiorna lo stato a "sta scrivendo..."
             this.statusText = 'sta scrivendo...';
             
+            // Scorrimento automatico verso l'ultimo messaggio
+            this.$nextTick(() => {
+                this.scrollToBottom();
+            });
+
             setTimeout(() => {
                 const nowResponse = dt.now().toFormat('dd/MM/yyyy HH:mm:ss');
                 
@@ -239,6 +244,11 @@ createApp ({
                             this.statusText = `ultimo accesso alle ${this.lastAccess}`;
                         }, 2000);
 
+                        // Scorrimento automatico verso l'ultimo messaggio
+                        this.$nextTick(() => {
+                            this.scrollToBottom();
+                        });
+
                     })
                     .catch(error => {
                         console.error('Errore nella richiesta API:', error);
@@ -260,6 +270,7 @@ createApp ({
                         }, 2000);
 
                     });
+
             }, 1000);
         },
         formatMessageDate(dateTimeString) {
@@ -323,6 +334,11 @@ createApp ({
         showAddContactForm() {
             this.showAddContactPopup = true;
         },
+
+        scrollToBottom() {
+            const chatContainer = this.$refs.chatContainer;
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
     
     }
 
