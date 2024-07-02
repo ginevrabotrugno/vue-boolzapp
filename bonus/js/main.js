@@ -178,6 +178,9 @@ createApp ({
             newMessage: '',
             openMessageOptions: [],
             searchKeyword: '',
+            statusText: 'online', // testo di stato iniziale
+            typingTimeout: null, // per gestire il timeout dello "sta scrivendo..."
+            lastAccess: '', // per memorizzare l'ultimo accesso
         }
     },
     computed: {
@@ -204,6 +207,9 @@ createApp ({
                 status: 'sent'
             });
             this.newMessage = ''; 
+
+            // Aggiorna lo stato a "sta scrivendo..."
+            this.statusText = 'sta scrivendo...';
             
             setTimeout(() => {
                 const nowResponse = dt.now().toFormat('dd/MM/yyyy HH:mm:ss');
@@ -216,6 +222,17 @@ createApp ({
                             message: result.data.response, 
                             status: 'received'
                         });
+
+                        // Imposta lo stato su "online"
+                        this.statusText = 'online';
+
+                        // Mantieni lo stato "online" per 2 secondi
+                        setTimeout(() => {
+                            // Imposta l'ultimo accesso
+                            this.lastAccess = nowResponse.split(' ')[1]; // solo l'orario
+                            this.statusText = `ultimo accesso alle ${this.lastAccess}`;
+                        }, 2000);
+
                     })
                     .catch(error => {
                         console.error('Errore nella richiesta API:', error);
@@ -225,6 +242,17 @@ createApp ({
                             message: 'Mi dispiace, non ho capito.',
                             status: 'received'
                         });
+
+                        // Imposta lo stato su "online"
+                        this.statusText = 'online';
+
+                        // Mantieni lo stato "online" per 2 secondi
+                        setTimeout(() => {
+                            // Imposta l'ultimo accesso
+                            this.lastAccess = dt.fromFormat(nowResponse, 'dd/MM/yyyy HH:mm:ss').toFormat('HH:mm');
+                            this.statusText = `ultimo accesso alle ${this.lastAccess}`;
+                        }, 2000);
+
                     });
             }, 1000);
         },
