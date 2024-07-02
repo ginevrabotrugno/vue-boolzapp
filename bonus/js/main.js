@@ -192,9 +192,9 @@ createApp ({
             this.selectedContactIndex = index;
         },
         sendMessage() {
-            // Non inviare messaggi vuoti
-            if (this.newMessage === '') {
-                return; 
+            // Verifica che il messaggio non sia vuoto o composto solo da spazi
+            if (this.newMessage.trim() === '') {
+                return;
             }
             const activeContact = this.contacts[this.selectedContactIndex];
             const now = dt.now().toFormat('dd/MM/yyyy HH:mm:ss');
