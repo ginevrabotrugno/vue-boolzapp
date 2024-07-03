@@ -63,7 +63,8 @@
 
                     <!-- lista chat -->
                     <ul class="chat-list">
-                        <li class="user" v-for="(contact, index) in filteredContacts" :key="index" @click="selectContact(index)" :class="{ active: selectedContactIndex === index }">
+                        <!-- Modifica 1: Cambiato il metodo selectContact per passare l'oggetto contatto -->
+                        <li class="user" v-for="(contact, index) in filteredContacts" :key="index" @click="selectContact(contact)" :class="{ active: selectedContact === contact }">
                             <div class="user-pic">
                                 <img :src="contact.avatar" :alt="contact.name">                            
                             </div>
@@ -82,41 +83,41 @@
 
 
                 <!-- Chat corrente -->
-                <div class="chat-opened">
+                <!-- Modifica 2: Aggiunto v-if per controllare se un contatto è selezionato -->
+                <div class="chat-opened" v-if="selectedContact">
                     <!-- profilo contatto chat -->
                     <div class="section-header">
-
                         <div class="user">
                             <div class="user-pic">
-                                <img :src="contacts[selectedContactIndex].avatar" alt="Avatar">
+                                <!-- Modifica 3: Usato selectedContact per accedere all'avatar del contatto -->
+                                <img :src="selectedContact.avatar" alt="Avatar">
                             </div>
                             <div class="user-info">
-                                <span>{{ contacts[selectedContactIndex].name }}</span>
-                                <span class="last-access">Ultimo accesso oggi alle {{ formatLastMessageTime(contacts[selectedContactIndex]) }}</span>
+                                <!-- Modifica 4: Usato selectedContact per accedere al nome del contatto -->
+                                <span>{{ selectedContact.name }}</span>
+                                <span class="last-access">Ultimo accesso oggi alle {{ formatLastMessageTime(selectedContact) }}</span>
                             </div>
                         </div>
                         <div class="tools">
                             <i class="fa-solid fa-magnifying-glass"></i>
                             <i class="fa-solid fa-paperclip"></i>
                             <i class="fa-solid fa-ellipsis-vertical"></i>
-
                         </div>
-                        
                     </div>
 
                     <div class="chat-container">
-                        <div v-for="(message, msgIndex) in contacts[selectedContactIndex].messages" :key="msgIndex" :class="['message', message.status === 'received' ? 'message-received' : 'message-sent']">
+                        <!-- Modifica 5: Usato selectedContact per iterare i messaggi del contatto selezionato -->
+                        <div v-for="(message, msgIndex) in selectedContact.messages" :key="msgIndex" :class="['message', message.status === 'received' ? 'message-received' : 'message-sent']">
                             <div class="message-content" @click="toggleMessageOptions(msgIndex)">
                                 <p>{{ message.message }}</p>
                                 <span class="timestamp">{{ formatMessageDate(message.date) }}</span>
-                                <!-- Aggiunta del menu a tendina -->
                                 <div v-if="isMessageOptionsOpen(msgIndex)" class="message-options">
                                     <a href="#" @click="deleteMessage(msgIndex)">Cancella messaggio</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-
+                    
                     <div class="writing-area">
                         <i class="fa-regular fa-face-smile"></i>
                         <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="sendMessage">

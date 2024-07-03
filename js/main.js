@@ -172,7 +172,7 @@ createApp ({
                     ],
                 }
             ],
-            selectedContactIndex: 0,
+            selectedContact: null,
             newMessage: '',
             openMessageOptions: [],
             searchKeyword: '',
@@ -186,8 +186,8 @@ createApp ({
         }
     },
     methods: {
-        selectContact(index) {
-            this.selectedContactIndex = index;
+        selectContact(contact) {
+            this.selectedContact = contact; 
         },
         sendMessage() {
             // Non inviare messaggi vuoti
